@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 
+#load data ratings
 def load_data_rating():
     start = time.time()
     Data_rate_file = open("ratings.dat", "r")
@@ -30,6 +31,7 @@ def check_rate_zeros(n):
     listofzeros = [0] * n
     return listofzeros
 
+#Tính trung bình rating
 def plotter(Y, K):
     n_users = Y.shape[0]
     delta = []
@@ -51,6 +53,7 @@ def hamming_simi(X, A):
 
     return v
 
+#Giải thuật tham lam
 def Greedy_file(X, K):
     n_users = X.shape[0]
     A = check_rate_zeros(n_users)
@@ -61,7 +64,6 @@ def Greedy_file(X, K):
 
     for j in range(X.shape[1]):
         a_dash = X[:, j]
-        # a_dash = a_dash.max(axis = 1)
         Sum_a_dash = a_dash.sum() / n_users
         a = np.array(A).max(axis=0)
         Sum_a = a.sum() / n_users
